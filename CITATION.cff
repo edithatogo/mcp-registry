@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: If you use this fork, please cite it using the metadata in this file. For upstream
+  work, also follow the citation guidance at https://github.com/docker/mcp-registry.
+title: Docker MCP Registry (edithatogo fork)
+authors:
+- name: Docker MCP Registry project
+repository-code: https://github.com/edithatogo/mcp-registry
