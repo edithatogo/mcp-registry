@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
 
 # Use a golang image to build the reviewer and proxy binaries (with cgo disabled).
-FROM golang:1.25-trixie AS gobuilder
+FROM golang:1.25-trixie@sha256:2c4c60ef415fbfa5e90300722293bef36c5e63fae17570ce18f580af933dbd73 AS gobuilder
 ENV CGO_ENABLED=0
 
 # Create and set a working directory for the code.
@@ -21,7 +21,7 @@ RUN go build -o /security-reviewer/build/proxy ./proxy
 
 
 # Use a debian image to host the agent.
-FROM debian:trixie-slim AS reviewer-image
+FROM debian:trixie-slim@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2 AS reviewer-image
 
 # Set up configuration.
 ARG CLAUDE_CODE_VERSION=latest
@@ -72,7 +72,7 @@ ENTRYPOINT ["/opt/security-reviewer/reviewer"]
 
 
 # Use a debian image to host the proxy.
-FROM debian:trixie-slim AS proxy-image
+FROM debian:trixie-slim@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2 AS proxy-image
 
 # Install dependencies, including those needed for healthchecks.
 ENV DEBIAN_FRONTEND=noninteractive
